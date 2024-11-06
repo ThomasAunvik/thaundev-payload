@@ -53,6 +53,7 @@
     "@payloadcms/db-vercel-postgres": "beta"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@next/eslint-plugin-next": "^13.1.6",
     "@payloadcms/eslint-config": "^1.1.1",
     "@tailwindcss/typography": "^0.5.13",

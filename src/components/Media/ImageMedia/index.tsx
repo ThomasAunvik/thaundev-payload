@@ -1,16 +1,16 @@
-'use client'
+"use client";
 
-import type { StaticImageData } from 'next/image'
+import type { StaticImageData } from "next/image";
 
-import { cn } from 'src/utilities/cn'
-import NextImage from 'next/image'
-import React from 'react'
+import { cn } from "src/utilities/cn";
+import NextImage from "next/image";
+import React from "react";
 
-import type { Props as MediaProps } from '../types'
+import type { Props as MediaProps } from "../types";
 
-import cssVariables from '@/cssVariables'
+import cssVariables from "@/cssVariables";
 
-const { breakpoints } = cssVariables
+const { breakpoints } = cssVariables;
 
 export const ImageMedia: React.FC<MediaProps> = (props) => {
   const {
@@ -23,29 +23,29 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
     resource,
     size: sizeFromProps,
     src: srcFromProps,
-  } = props
+  } = props;
 
-  const [isLoading, setIsLoading] = React.useState(true)
+  const [isLoading, setIsLoading] = React.useState(true);
 
-  let width: number | undefined
-  let height: number | undefined
-  let alt = altFromProps
-  let src: StaticImageData | string = srcFromProps || ''
+  let width: number | null | undefined = null;
+  let height: number | null | undefined = null;
+  let alt = altFromProps;
+  let src: StaticImageData | string = srcFromProps || "";
 
-  if (!src && resource && typeof resource === 'object') {
+  if (!src && resource && typeof resource === "object") {
     const {
       alt: altFromResource,
       filename: fullFilename,
       height: fullHeight,
       url,
       width: fullWidth,
-    } = resource
+    } = resource;
 
-    width = fullWidth!
-    height = fullHeight!
-    alt = altFromResource
+    width = fullWidth;
+    height = fullHeight;
+    alt = altFromResource;
 
-    src = `${process.env.NEXT_PUBLIC_SERVER_URL}${url}`
+    src = `${process.env.NEXT_PUBLIC_SERVER_URL}${url}`;
   }
 
   // NOTE: this is used by the browser to determine which image to download at different screen sizes
@@ -53,26 +53,26 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
     ? sizeFromProps
     : Object.entries(breakpoints)
         .map(([, value]) => `(max-width: ${value}px) ${value}px`)
-        .join(', ')
+        .join(", ");
 
   return (
     <NextImage
-      alt={alt || ''}
+      alt={alt || ""}
       className={cn(imgClassName)}
       fill={fill}
-      height={!fill ? height : undefined}
+      height={!fill ? (height ?? undefined) : undefined}
       onClick={onClick}
       onLoad={() => {
-        setIsLoading(false)
-        if (typeof onLoadFromProps === 'function') {
-          onLoadFromProps()
+        setIsLoading(false);
+        if (typeof onLoadFromProps === "function") {
+          onLoadFromProps();
         }
       }}
       priority={priority}
       quality={90}
       sizes={sizes}
       src={src}
-      width={!fill ? width : undefined}
+      width={!fill ? (width ?? undefined) : undefined}
     />
-  )
-}
+  );
+};

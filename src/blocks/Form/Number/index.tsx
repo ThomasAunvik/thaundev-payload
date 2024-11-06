@@ -1,22 +1,36 @@
-import type { TextField } from '@payloadcms/plugin-form-builder/types'
-import type { FieldErrorsImpl, FieldValues, UseFormRegister } from 'react-hook-form'
+import type { TextField } from "@payloadcms/plugin-form-builder/types";
+import type {
+  FieldErrorsImpl,
+  FieldValues,
+  UseFormRegister,
+} from "react-hook-form";
 
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import React from 'react'
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import type React from "react";
 
-import { Error } from '../Error'
-import { Width } from '../Width'
-export const Number: React.FC<
+import { ErrorMessage } from "../Error";
+import { Width } from "../Width";
+
+export const NumberInput: React.FC<
   TextField & {
     errors: Partial<
       FieldErrorsImpl<{
-        [x: string]: any
+        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+        [x: string]: any;
       }>
-    >
-    register: UseFormRegister<FieldValues>
+    >;
+    register: UseFormRegister<FieldValues>;
   }
-> = ({ name, defaultValue, errors, label, register, required: requiredFromProps, width }) => {
+> = ({
+  name,
+  defaultValue,
+  errors,
+  label,
+  register,
+  required: requiredFromProps,
+  width,
+}) => {
   return (
     <Width width={width}>
       <Label htmlFor={name}>{label}</Label>
@@ -26,7 +40,7 @@ export const Number: React.FC<
         type="number"
         {...register(name, { required: requiredFromProps })}
       />
-      {requiredFromProps && errors[name] && <Error />}
+      {requiredFromProps && errors[name] && <ErrorMessage />}
     </Width>
-  )
-}
+  );
+};
