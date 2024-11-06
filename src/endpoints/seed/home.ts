@@ -136,6 +136,9 @@ export const home: RequiredDataFromCollectionSlug<"pages"> = {
       blockType: "content",
       columns: [
         {
+          link: {
+            label: "Feature",
+          },
           richText: {
             root: {
               type: "root",
@@ -169,6 +172,9 @@ export const home: RequiredDataFromCollectionSlug<"pages"> = {
           size: "full",
         },
         {
+          link: {
+            label: "Admin Dashboard",
+          },
           enableLink: false,
           richText: {
             root: {
@@ -254,6 +260,9 @@ export const home: RequiredDataFromCollectionSlug<"pages"> = {
           size: "oneThird",
         },
         {
+          link: {
+            label: "Using versions",
+          },
           enableLink: false,
           richText: {
             root: {
@@ -307,6 +316,9 @@ export const home: RequiredDataFromCollectionSlug<"pages"> = {
           size: "oneThird",
         },
         {
+          link: {
+            label: "Page Builder",
+          },
           enableLink: false,
           richText: {
             root: {
@@ -360,6 +372,9 @@ export const home: RequiredDataFromCollectionSlug<"pages"> = {
           size: "oneThird",
         },
         {
+          link: {
+            label: "SEO",
+          },
           enableLink: false,
           richText: {
             root: {
@@ -445,6 +460,9 @@ export const home: RequiredDataFromCollectionSlug<"pages"> = {
           size: "oneThird",
         },
         {
+          link: {
+            label: "Dark Mode",
+          },
           enableLink: false,
           richText: {
             root: {
